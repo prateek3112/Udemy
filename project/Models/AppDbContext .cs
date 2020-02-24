@@ -10,7 +10,7 @@ namespace project.Models
 
         }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<courses> Pies { get; set; }
+        public DbSet<courses> Courses { get; set; }
         //public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Orderdetails> OrderDetails { get; set; }
@@ -143,5 +143,8 @@ namespace project.Models
 
         }
         public DbSet<User> User { get; set; }
+        public DbSet<courses> Course { get; set; }
+        //public DbSet<Category> Category { get; set; }
+
     }
 }

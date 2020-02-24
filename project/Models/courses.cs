@@ -21,5 +21,8 @@ namespace project.Models
         public int CategoryId { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
+        public virtual Category Category { get; set; }
+
+        public bool IsCourseOfTheWeek { get; set; }
     }
 }

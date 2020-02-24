@@ -11,48 +11,48 @@ namespace project.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class coursesController : ControllerBase
+    public class OrdersController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public coursesController(AppDbContext context)
+        public OrdersController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/courses
+        // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<courses>>> GetPies()
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-            return await _context.Courses.ToListAsync();
+            return await _context.Orders.ToListAsync();
         }
 
-        // GET: api/courses/5
+        // GET: api/Orders/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<courses>> Getcourses(int id)
+        public async Task<ActionResult<Order>> GetOrder(int id)
         {
-            var courses = await _context.Courses.FindAsync(id);
+            var order = await _context.Orders.FindAsync(id);
 
-            if (courses == null)
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return courses;
+            return order;
         }
 
-        // PUT: api/courses/5
+        // PUT: api/Orders/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putcourses(int id, courses courses)
+        public async Task<IActionResult> PutOrder(int id, Order order)
         {
-            if (id != courses.CourseId)
+            if (id != order.OrderId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(courses).State = EntityState.Modified;
+            _context.Entry(order).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace project.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!coursesExists(id))
+                if (!OrderExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace project.Controllers
             return NoContent();
         }
 
-        // POST: api/courses
+        // POST: api/Orders
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<courses>> Postcourses(courses courses)
+        public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            _context.Courses.Add(courses);
+            _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("Getcourses", new { id = courses.CourseId }, courses);
+            return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
         }
 
-        // DELETE: api/courses/5
+        // DELETE: api/Orders/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<courses>> Deletecourses(int id)
+        public async Task<ActionResult<Order>> DeleteOrder(int id)
         {
-            var courses = await _context.Courses.FindAsync(id);
-            if (courses == null)
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            _context.Courses.Remove(courses);
+            _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
 
-            return courses;
+            return order;
         }
 
-        private bool coursesExists(int id)
+        private bool OrderExists(int id)
         {
-            return _context.Courses.Any(e => e.CourseId == id);
+            return _context.Orders.Any(e => e.OrderId == id);
         }
     }
 }

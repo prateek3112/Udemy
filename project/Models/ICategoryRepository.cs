@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace project.Models
 {
-    public interface IUser
+    public interface ICategoryRepository
     {
-        IEnumerable<courses> Courses{ get; }
-
+        IEnumerable<Category> Categories { get; }
     }
 }

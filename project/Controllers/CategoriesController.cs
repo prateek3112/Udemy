@@ -6,53 +6,54 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project.Models;
+using project.Controllers;
 
 namespace project.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class coursesController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public coursesController(AppDbContext context)
+        public CategoriesController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/courses
+        // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<courses>>> GetPies()
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Courses.ToListAsync();
+            return await _context.Categories.ToListAsync();
         }
 
-        // GET: api/courses/5
+        // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<courses>> Getcourses(int id)
+        public async Task<ActionResult<Category>> GetCategory(int id)
         {
-            var courses = await _context.Courses.FindAsync(id);
+            var category = await _context.Categories.FindAsync(id);
 
-            if (courses == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return courses;
+            return category;
         }
 
-        // PUT: api/courses/5
+        // PUT: api/Categories/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putcourses(int id, courses courses)
+        public async Task<IActionResult> PutCategory(int id, Category category)
         {
-            if (id != courses.CourseId)
+            if (id != category.CategoryId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(courses).State = EntityState.Modified;
+            _context.Entry(category).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +61,7 @@ namespace project.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!coursesExists(id))
+                if (!CategoryExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +74,37 @@ namespace project.Controllers
             return NoContent();
         }
 
-        // POST: api/courses
+        // POST: api/Categories
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<courses>> Postcourses(courses courses)
+        public async Task<ActionResult<Category>> PostCategory(Category category)
         {
-            _context.Courses.Add(courses);
+            _context.Categories.Add(category);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("Getcourses", new { id = courses.CourseId }, courses);
+            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
         }
 
-        // DELETE: api/courses/5
+        // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<courses>> Deletecourses(int id)
+        public async Task<ActionResult<Category>> DeleteCategory(int id)
         {
-            var courses = await _context.Courses.FindAsync(id);
-            if (courses == null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            _context.Courses.Remove(courses);
+            _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
 
-            return courses;
+            return category;
         }
 
-        private bool coursesExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Courses.Any(e => e.CourseId == id);
+            return _context.Categories.Any(e => e.CategoryId == id);
         }
     }
 }

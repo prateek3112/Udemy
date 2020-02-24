@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using project.Models;
 
 namespace project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200224060305_popo")]
+    partial class popo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace project.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
 
                     b.HasData(
                         new
@@ -97,10 +99,13 @@ namespace project.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("CourseId")
+                    b.Property<int?>("CourseId")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PieId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -149,9 +154,6 @@ namespace project.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsCourseOfTheWeek")
-                        .HasColumnType("bit");
-
                     b.Property<string>("LongDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -176,7 +178,6 @@ namespace project.Migrations
                             CourseId = 1,
                             CategoryId = 1,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "Hypertext Markup Language is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets and scripting languages such as JavaScript",
                             Name = "HTML",
                             Price = 500m,
@@ -187,7 +188,6 @@ namespace project.Migrations
                             CourseId = 2,
                             CategoryId = 1,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language like HTML. CSS is a cornerstone technology of the World Wide Web.",
                             Name = "CSS",
                             Price = 700m,
@@ -198,7 +198,6 @@ namespace project.Migrations
                             CourseId = 3,
                             CategoryId = 1,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "JavaScript, often abbreviated as JS, is an interpreted programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm.",
                             Name = "JAVASCRIPT",
                             Price = 800m,
@@ -209,7 +208,6 @@ namespace project.Migrations
                             CourseId = 4,
                             CategoryId = 2,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "Excel, Accounting, Financial Statement Analysis, Business Analysis, Financial Math, PowerPoint: Everything is Included!",
                             Name = "Complete Financial Analyst Course",
                             Price = 500m,
@@ -220,7 +218,6 @@ namespace project.Migrations
                             CourseId = 5,
                             CategoryId = 1,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "Learn Tableau 10 for Data Science step-by-step. Real-Life Data Analytics Exercises & Quizzes Included. Learn by doing!",
                             Name = "Tableau 10",
                             Price = 600m,
@@ -231,7 +228,6 @@ namespace project.Migrations
                             CourseId = 6,
                             CategoryId = 2,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "The #1 Course to Land a Job in Investment Banking. IPOs, Bonds, M&A, Trading, LBOs, Valuation: Everything is included!",
                             Name = " Complete Investment Banking Course",
                             Price = 700m,
@@ -242,7 +238,6 @@ namespace project.Migrations
                             CourseId = 7,
                             CategoryId = 3,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "Want to pass the AWS Solutions Architect - Associate Exam? Want to become Amazon Web Services Certified? Do this course!",
                             Name = "AWS Certified Solutions Architect",
                             Price = 500m,
@@ -253,7 +248,6 @@ namespace project.Migrations
                             CourseId = 8,
                             CategoryId = 1,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "",
                             Name = " Ethical Hacking",
                             Price = 700m,
@@ -264,7 +258,6 @@ namespace project.Migrations
                             CourseId = 9,
                             CategoryId = 1,
                             ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
-                            IsCourseOfTheWeek = false,
                             LongDescription = "",
                             Name = "CSS",
                             Price = 700m,
@@ -276,9 +269,7 @@ namespace project.Migrations
                 {
                     b.HasOne("project.Models.courses", "course")
                         .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId");
 
                     b.HasOne("project.Models.Order", "Order")
                         .WithMany("OrderLines")
