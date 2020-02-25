@@ -2,57 +2,61 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project.Models;
 
 namespace project.Controllers
-{   
+{
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase
+    public class UserInfoesController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public OrdersController(AppDbContext context)
+        public UserInfoesController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Orders
+        
+        // GET: api/UserInfoes
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+        public async Task<ActionResult<IEnumerable<UserInfo>>> GetUserInfo()
         {
-            return await _context.Orders.ToListAsync();
+            return await _context.UserInfo.ToListAsync();
         }
 
-        // GET: api/Orders/5
+        // GET: api/UserInfoes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Order>> GetOrder(int id)
+        public async Task<ActionResult<UserInfo>> GetUserInfo(int id)
         {
-            var order = await _context.Orders.FindAsync(id);
+            var userInfo = await _context.UserInfo.FindAsync(id);
 
-            if (order == null)
+            if (userInfo == null)
             {
                 return NotFound();
             }
 
-            return order;
+            return userInfo;
         }
 
-        // PUT: api/Orders/5
+        // PUT: api/UserInfoes/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(int id, Order order)
+        public async Task<IActionResult> PutUserInfo(int id, UserInfo userInfo)
         {
-            if (id != order.OrderId)
+            if (id != userInfo.UserId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(order).State = EntityState.Modified;
+            _context.Entry(userInfo).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +64,7 @@ namespace project.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderExists(id))
+                if (!UserInfoExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +77,37 @@ namespace project.Controllers
             return NoContent();
         }
 
-        // POST: api/Orders
+        // POST: api/UserInfoes
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        public async Task<ActionResult<UserInfo>> PostUserInfo(UserInfo userInfo)
         {
-            _context.Orders.Add(order);
+            _context.UserInfo.Add(userInfo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
+            return CreatedAtAction("GetUserInfo", new { id = userInfo.UserId }, userInfo);
         }
 
-        // DELETE: api/Orders/5
+        // DELETE: api/UserInfoes/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Order>> DeleteOrder(int id)
+        public async Task<ActionResult<UserInfo>> DeleteUserInfo(int id)
         {
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null)
+            var userInfo = await _context.UserInfo.FindAsync(id);
+            if (userInfo == null)
             {
                 return NotFound();
             }
 
-            _context.Orders.Remove(order);
+            _context.UserInfo.Remove(userInfo);
             await _context.SaveChangesAsync();
 
-            return order;
+            return userInfo;
         }
 
-        private bool OrderExists(int id)
+        private bool UserInfoExists(int id)
         {
-            return _context.Orders.Any(e => e.OrderId == id);
+            return _context.UserInfo.Any(e => e.UserId == id);
         }
     }
 }

@@ -1,0 +1,1 @@
+Insert Into UserInfo(FirstName, LastName, UserName, Email, Password) Values ('Prateek', 'Guglani', 'Admin', 'InventoryAdmin@abc.com', '$admin@2020') 

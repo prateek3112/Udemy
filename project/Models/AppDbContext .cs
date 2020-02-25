@@ -14,6 +14,13 @@ namespace project.Models
         //public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Orderdetails> OrderDetails { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(" Server = (localdb)\\mssqllocaldb; Database =UdemyDatabse; Trusted_Connection = True; MultipleActiveResultSets = true");
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -142,7 +149,7 @@ namespace project.Models
             });
 
         }
-        public DbSet<User> User { get; set; }
+        public DbSet<UserInfo> UserInfo { get; set; }
         public DbSet<courses> Course { get; set; }
         //public DbSet<Category> Category { get; set; }
 

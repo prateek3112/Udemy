@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project.Models;
 using project.Controllers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace project.Controllers
 {
+  
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase

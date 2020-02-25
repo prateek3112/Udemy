@@ -150,6 +150,15 @@ C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\runtimes\wi
 C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\INT173\source\repos\project\project\obj\Debug\netcoreapp3.1\project.csprojAssemblyReference.cache
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\INT173\source\repos\project\project\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\INT173\source\repos\project\project\obj\Debug\netcoreapp3.1\project.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\INT173\source\repos\project\project\obj\Debug\netcoreapp3.1\project.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\INT173\source\repos\project\project\obj\Debug\netcoreapp3.1\project.csprojAssemblyReference.cache
