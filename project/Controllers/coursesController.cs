@@ -10,7 +10,7 @@ using project.Models;
 
 namespace project.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class coursesController : ControllerBase
@@ -24,10 +24,11 @@ namespace project.Controllers
 
         // GET: api/courses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<courses>>> GetPies()
+        public async Task<ActionResult<IEnumerable<courses>>> GetCourses()
         {
             return await _context.Courses.ToListAsync();
         }
+       
 
         // GET: api/courses/5
         [HttpGet("{id}")]

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace project.Controllers
 {
-  
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
@@ -28,6 +28,10 @@ namespace project.Controllers
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
             return await _context.Categories.ToListAsync();
+        }
+        public async Task<ActionResult<IEnumerable<courses>>> GetCourses()
+        {
+            return await _context.Courses.ToListAsync();
         }
 
         // GET: api/Categories/5

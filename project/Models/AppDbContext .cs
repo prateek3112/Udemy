@@ -25,10 +25,16 @@ namespace project.Models
         {
             base.OnModelCreating(modelBuilder);
             //seed categories
-            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 1, CategoryName = "Development" });
-            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Business" });
+            modelBuilder.Entity<Category>().HasData(new Category
+            {
+                CategoryId = 1,
+                CategoryName = "Development",
+                Description = "Development Courses",
+              
+            });
+            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Business" , Description ="Courses related to Business"  });
             modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "IT and Software" });
-
+           
             modelBuilder.Entity<courses>().HasData(new courses
             {
                 CourseId = 1,
