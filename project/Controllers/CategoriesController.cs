@@ -6,32 +6,26 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using project.Models;
-using project.Controllers;
-using Microsoft.AspNetCore.Authorization;
 
 namespace project.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
         private readonly AppDbContext _context;
-
-        public CategoriesController(AppDbContext context)
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoriesController(AppDbContext context, ICategoryRepository categoryRepository)
         {
             _context = context;
+            _categoryRepository = categoryRepository;
         }
 
         // GET: api/Categories
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
-        }
-        public async Task<ActionResult<IEnumerable<courses>>> GetCourses()
-        {
-            return await _context.Courses.ToListAsync();
+            return _categoryRepository.Categories.ToList();
         }
 
         // GET: api/Categories/5
@@ -39,6 +33,7 @@ namespace project.Controllers
         public async Task<ActionResult<Category>> GetCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);
+            category.Course = _context.Course.Where(c => c.CategoryId == id).ToList();
 
             if (category == null)
             {

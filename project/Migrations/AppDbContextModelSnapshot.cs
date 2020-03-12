@@ -40,12 +40,14 @@ namespace project.Migrations
                         new
                         {
                             CategoryId = 1,
-                            CategoryName = "Development"
+                            CategoryName = "Development",
+                            Description = "Development Courses"
                         },
                         new
                         {
                             CategoryId = 2,
-                            CategoryName = "Business"
+                            CategoryName = "Business",
+                            Description = "Courses related to Business"
                         },
                         new
                         {
@@ -103,8 +105,8 @@ namespace project.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("OrderDetailId");
 
@@ -115,7 +117,35 @@ namespace project.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("project.Models.User", b =>
+            modelBuilder.Entity("project.Models.Registration", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConfirmPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Registration");
+                });
+
+            modelBuilder.Entity("project.Models.UserInfo", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -131,9 +161,15 @@ namespace project.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("UserInfo");
                 });
 
             modelBuilder.Entity("project.Models.courses", b =>

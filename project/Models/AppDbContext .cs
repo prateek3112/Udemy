@@ -10,9 +10,11 @@ namespace project.Models
 
         }
         public DbSet<Category> Categories { get; set; }
+        //public DbSet<Registration> Registration { get; set; }
         public DbSet<courses> Courses { get; set; }
         //public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
+        
         public DbSet<Orderdetails> OrderDetails { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,11 +31,16 @@ namespace project.Models
             {
                 CategoryId = 1,
                 CategoryName = "Development",
-                Description = "Development Courses",
-              
+                Description = "Development Courses"
+
             });
-            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 2, CategoryName = "Business" , Description ="Courses related to Business"  });
-            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "IT and Software" });
+            modelBuilder.Entity<Category>().HasData(new Category { 
+                CategoryId = 2, 
+                CategoryName = "Business", 
+                Description = "Courses related to Business"
+                
+        });
+            modelBuilder.Entity<Category>().HasData(new Category { CategoryId = 3, CategoryName = "IT and Software", Description = "Courses related to IT" });
            
             modelBuilder.Entity<courses>().HasData(new courses
             {
@@ -96,7 +103,7 @@ namespace project.Models
                 ShortDescription = "Hands-On Tableau Training For Data Science!",
                 LongDescription =
                  "Learn Tableau 10 for Data Science step-by-step. Real-Life Data Analytics Exercises & Quizzes Included. Learn by doing!",
-                CategoryId = 1,
+                CategoryId = 2,
                 ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
 
 
@@ -135,7 +142,7 @@ namespace project.Models
                 ShortDescription = "",
                 LongDescription =
                  "",
-                CategoryId = 1,
+                CategoryId = 3,
                 ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
 
 
@@ -148,7 +155,7 @@ namespace project.Models
                 ShortDescription = "Fundamentals Of CSS",
                 LongDescription =
                  "",
-                CategoryId = 1,
+                CategoryId = 3,
                 ImageUrl = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn2.f-cdn.com%2Fcontestentries%2F1162950%2F24458736%2F59eb2e742db12_thumb900.jpg&imgrefurl=https%3A%2F%2Fwww.freelancer.com.jm%2Fcontest%2FCreate-a-Course-Thumbnail-1162950-byentry-17033112.html&tbnid=L-4SZz2fEV8QSM&vet=12ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ..i&docid=pnGU3F0-FV17zM&w=503&h=309&q=html%20course%20thumbnail&ved=2ahUKEwjY4YfLyd_nAhX1XHwKHfKJCZ8QMygBegUIARDPAQ",
 
 

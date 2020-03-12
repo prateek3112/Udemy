@@ -15,11 +15,18 @@ namespace project.Models
         {
             _appDbContext = appDbContext;
         }
+        //public IEnumerable<Category> Categories
+        //{
+        //    get
+        //    {
+        //        return _appDbContext.Categories;
+        //    }
+        //}
         public IEnumerable<Category> Categories
         {
             get
             {
-                return _appDbContext.Categories;
+                return _appDbContext.Categories.ToList();
             }
         }
     }

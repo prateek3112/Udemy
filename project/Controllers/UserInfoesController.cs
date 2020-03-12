@@ -10,7 +10,7 @@ using project.Models;
 
 namespace project.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UserInfoesController : ControllerBase
@@ -22,15 +22,15 @@ namespace project.Controllers
             _context = context;
         }
 
-        
+
         // GET: api/UserInfoes
-        
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserInfo>>> GetUserInfo()
         {
             return await _context.UserInfo.ToListAsync();
         }
-
+        [Authorize]
         // GET: api/UserInfoes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserInfo>> GetUserInfo(int id)

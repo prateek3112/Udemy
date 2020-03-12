@@ -11,7 +11,7 @@ namespace project.Models
         [Key]
         public int CourseId { get; set; }
 
-
+       
         public string Name { get; set; }
 
         public decimal Price { get; set; }
